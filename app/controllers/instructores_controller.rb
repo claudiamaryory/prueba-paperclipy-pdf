@@ -31,14 +31,32 @@ class InstructoresController < ApplicationController
 
   def create
       @instructor = Instructor.new(params[:instructor])
-      render :action => :new unless @instructor.save
-      @instructores = Instructor.all
+      respond_to do |format|
+        if @instructor.save
+         format.html { redirect_to instructores_path }
+         format.json { render json: @instructor, status: :created, location: @instructor }
+         else
+         format.html { render action: "new" }
+         format.json { render json: @instructor.errors, status: :unprocessable_entity }
+        end
+      end
   end
 
-   def update
-      @instructor = Instructor.find(params[:id])
-      render :action => :edit unless @instructor.update_attributes(params[:instructor])
+
+
+  def update
+    @instructor = Instructor.find(params[:id])
+    respond_to do |format|
+      if @instructor.update_attributes(params[:instructor])
+         format.html { redirect_to instructores_path }
+         format.json { head :no_content }
+      else
+         format.html { render action: "edit" }
+         format.json { render json: @instructor.errors, status: :unprocessable_entity }
+      end
+    end
   end
+
 
   def destroy
       @instructor = Instructor.find(params[:id])

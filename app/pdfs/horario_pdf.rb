@@ -1,3 +1,7 @@
+
+#codigo para modificar el pdf donde le puedo cambiar la imagen el texto de inicio
+#y lo que deceo mostar en pdf
+
 class HorarioPdf < Prawn::Document
 
  def initialize(horario,view)

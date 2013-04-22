@@ -9,5 +9,5 @@
   <p><%=@instructor.cedula%></p>
   <p><%=@instructor.email%></p>
   <p><%=@instructor.direccion%></p>
-
+  <%= image_tag @instructor.imagen.url(:small) %> 
 </div>

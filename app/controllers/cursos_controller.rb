@@ -1,7 +1,7 @@
 class CursosController < ApplicationController
     before_filter :find_curso, :except => [ :index, :create, :new ]
     helper_method :sort_column, :sort_direction
-  def index
+  def index  
      @nrp = (params[:registro] != nil)? params[:registro].to_i : 3
 
      if ((@nrp) <= 0)

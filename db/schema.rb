@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130405131503) do
+ActiveRecord::Schema.define(:version => 20130422150227) do
 
   create_table "cursos", :force => true do |t|
     t.string   "nombre"
@@ -29,8 +29,12 @@ ActiveRecord::Schema.define(:version => 20130405131503) do
     t.string   "direccion"
     t.date     "fcha_nacimiento"
     t.integer  "curso_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "imagen_file_name"
+    t.string   "imagen_content_type"
+    t.integer  "imagen_file_size"
+    t.datetime "imagen_updated_at"
   end
 
   add_index "estudiantes", ["curso_id"], :name => "index_estudiantes_on_curso_id"
@@ -58,8 +62,12 @@ ActiveRecord::Schema.define(:version => 20130405131503) do
     t.string   "telefono"
     t.string   "direccion"
     t.integer  "materia_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "imagen_file_name"
+    t.string   "imagen_content_type"
+    t.integer  "imagen_file_size"
+    t.datetime "imagen_updated_at"
   end
 
   add_index "instructores", ["materia_id"], :name => "index_instructores_on_materia_id"

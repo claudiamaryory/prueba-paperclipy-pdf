@@ -1,4 +1,9 @@
-<%= simple_form_for(@instructor, :html => { :class => 'form-horizontal' }, :remote => true) do |f| %>
+<br>
+<br>
+<br>
+<br>
+<br>
+<%= simple_form_for(@instructor, :html => { :multipart => true, :class => 'form-horizontal' }) do |f| %>
 
   <%= f.error_notification %>
  
@@ -11,6 +16,12 @@
     <%= f.submit "guardar", :class => 'btn btn-primary' %>
     <%= link_to 'Atras', instructores_path, :class => 'btn btn-small' %>
   </div>
+	
+	<div class="actions">
+		    <%= f.submit %>
+		    <%= f.file_field :imagen %>
+    </div>
+		  
 <% end %>
 
 
