@@ -1,0 +1,53 @@
+<br>
+<br>
+<br>
+ <center><h1>Materias</h1></center>
+   <%= form_tag request.path, :method => 'get' do %>
+     Datos a Buscar:
+   <div class="input-append">
+     <%= search_field_tag :search, params[:search], options ={ :class=>"span2", :placeholder => "Materias, ficha"} %>
+     <%= submit_tag "Consultar", :class => "btn btn-info", :nombre => nil %>
+   </div>
+    <p>numero de registros:
+  <p><%= text_field_tag :registro, params[:registro], options={:class=>"span1"} %></p>
+   <%= hidden_field_tag :direction, params[:direction] %>
+ <%= hidden_field_tag :sort, params[:sort] %>
+   <% end %>
+<br />
+<div class="row">
+    <div class="span4"> 
+</div>
+ <div class="span5">
+<table class="table table-striped table-bordered table-condensed pretty">
+  <thead>
+    <tr>
+    <th><%= sortable "id" %></th>
+    <th><%= sortable "nombre", "Nombre" %></th>
+    <th><%= sortable "sigla", "Sigla" %></th>
+     <th><%= sortable "Acciones" %></th>         
+    </tr>
+  </tr>
+  </thead>
+  <tbody>
+     <%= render @materias %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td><%= link_to image_tag('libro.gif', :tile  => "Nueva Materia"),  new_materia_path, :remote => true %></td>
+    </tr>
+  </tfoot>
+  <tfoot>
+    <tr>
+     <td>Total Materias :<input type="text"  id="totalregs" class="span1" value="<%= @materias.total_entries %>" readonly />
+ </td>
+    </tr>
+  </tfoot>
+</table>
+</div>
+<br />
+<br />
+<div align="center">
+<%= will_paginate @materias, :previous_label => '&laquo; Anterior', :next_label => 'Siguiente
+&raquo;' %>
+</div>
+

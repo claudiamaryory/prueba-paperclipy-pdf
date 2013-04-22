@@ -1,0 +1,13 @@
+<%- model_class = Instructor -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
+
+<div class='instructor'>
+  <p><%= @instructor.id %></p>
+  <p><%= @instructor.nombre %></p>
+  <p><%=@instructor.cedula%></p>
+  <p><%=@instructor.email%></p>
+  <p><%=@instructor.direccion%></p>
+
+</div>

@@ -1,0 +1,52 @@
+
+<<br>
+<br>
+<br>
+ <center><h1>Instructores</h1></center>
+   <%= form_tag request.path, :method => 'get' do %>
+     Datos a Buscar:
+   <div class="input-append">
+     <%= search_field_tag :search, params[:search], options ={ :class=>"span2", :placeholder => "Instructores, ficha"} %>
+     <%= submit_tag "Consultar", :class => "btn btn-info", :nombre => nil %>
+   </div>
+    <p>numero de registros:
+  <p><%= text_field_tag :registro, params[:registro], options={:class=>"span1"} %></p>
+   <%= hidden_field_tag :direction, params[:direction] %>
+ <%= hidden_field_tag :sort, params[:sort] %>
+   <% end %>
+<br />
+
+<table class="table table-striped table-bordered table-condensed pretty">
+  <thead>
+    <tr>
+    <th><%= sortable "id" %></th>
+    <th><%= sortable "nombre", "Nombre" %></th>
+    <th><%= sortable "cedula", "Cedula" %></th>
+    <th><%= sortable "email", "Email" %></th>
+    <th><%= sortable "direccion", "Direccion" %></th>
+    <th><%= sortable "Acciones" %></th>           
+    </tr>
+  </tr>
+  </thead>
+  <tbody>
+     <%= render @instructores %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td><%= link_to image_tag('instructor.jpg', :tile  => "Nuevo horario"),   new_instructor_path, :remote => true %></td>
+    </tr>
+  <tfoot>
+    <tr>
+     <td>Total Instuctores :<input type="text"  id="totalregs" class="span1" value="<%= @instructores.total_entries %>" readonly />
+ </td>
+    </tr>
+  </tfoot>
+</table>
+</div>
+<br />
+<br />
+<div align="center">
+<%= will_paginate @instructores, :previous_label => '&laquo; Anterior', :next_label => 'Siguiente
+&raquo;' %>
+</div>
+

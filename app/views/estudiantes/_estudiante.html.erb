@@ -1,0 +1,23 @@
+<tr id=<%= "estudiante_#{estudiante.id}" %>>
+  <td><%= link_to estudiante.id, edit_estudiante_path(estudiante), :remote => true %></td>
+  <td><%= estudiante.nombre %></td>
+  <td><%= estudiante.cedula %></td>
+  <td><%= estudiante.email %></td>
+  <td><%= estudiante.direccion %></td>
+  <td><%= estudiante.fcha_nacimiento %></td>
+
+
+  <td>
+    
+    <%= link_to  image_tag('Lupa.gif', :title => "mostrar"),curso_estudiante_path(@curso,estudiante), :remote => true, :class => 'btn btn-mini' %>
+    <%= link_to image_tag( 'editar1.png', :title=>"editar"), edit_curso_estudiante_path(@curso,estudiante), :remote => true,
+        :class => 'btn btn-mini' %>
+    <%= link_to image_tag('destroy.gif',  :title=> "eliminar"), curso_estudiante_path(@curso, estudiante), 
+        :data => { :confirm => 'Esta Seguro?' }%>
+
+    
+  </td>
+</tr>
+
+
+ 

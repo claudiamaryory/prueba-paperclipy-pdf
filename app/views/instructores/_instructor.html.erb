@@ -1,0 +1,18 @@
+<tr id=<%= "instructor_#{instructor.id}" %>>
+  <td><%= link_to instructor.id, edit_instructor_path(instructor), :remote => true %></td>
+  <td><%= instructor.nombre %></td>
+  <td><%= instructor.cedula %></td>
+  <td><%= instructor.email %></td>
+  <th><%= instructor.direccion %></th>
+  
+  <td>
+    <%= link_to image_tag('Lupa.gif', :title => "mostrar"), instructor, :remote => true, :class => 'btn btn-mini' %>
+    <%= link_to image_tag( 'editar1.png', :title=>"editar"), edit_instructor_path(instructor), :remote => true,
+        :class => 'btn btn-mini' %>
+    <%= link_to image_tag('destroy.gif'), instructor, 
+        :data => { :confirm => 'Esta Seguro?' },
+        :method => :delete, :remote => true, :class => 'btn btn-mini btn-danger' %>
+  </td>
+</tr>
+
+
